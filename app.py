@@ -6,7 +6,10 @@ from PIL import Image
 import re
 
 # 🔹 Set tesseract path (Windows)
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+import os
+
+TESSERACT_PATH = os.environ.get("TESSERACT_PATH", "tesseract")
+pytesseract.pytesseract.tesseract_cmd = TESSERACT_PATH
 
 app = Flask(__name__)
 

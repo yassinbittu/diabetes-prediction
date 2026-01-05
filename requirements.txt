@@ -1,0 +1,8 @@
+flask
+numpy
+pandas
+scikit-learn
+joblib
+pillow
+pytesseract
+opencv-python
