@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Prediction System</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+        }
+        .box {
+            width: 420px;
+            margin: 60px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        input, button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 8px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            background: #eef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Diabetes Prediction (Upload Medical Report)</h2>
+
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="report" accept="image/*" required>
+        <button type="submit">Upload & Predict</button>
+    </form>
+
+    {% if status %}
+        <div class="result">
+            <h3>Patient Name: {{ patient_name }}</h3>
+            <p><strong>Glucose:</strong> {{ glucose }} mg/dL</p>
+            <p><strong>BMI:</strong> {{ bmi }}</p>
+            <h3>Status: {{ status }}</h3>
+            <p>{{ condition }}</p>
+            <p><strong>Medical Advice:</strong> {{ advice }}</p>
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <p style="color:red;">Error: {{ error }}</p>
+    {% endif %}
+</div>
+
+</body>
+</html>
